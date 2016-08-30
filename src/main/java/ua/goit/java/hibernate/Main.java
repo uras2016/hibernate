@@ -34,30 +34,34 @@ public class Main {
 
     private void start() {
 
+        System.out.println("-----------------------------------------------------");
+
         employeeController.createEmployees();
         employeeController.addNewEmployee(employeeController.bornEmployee("Sasha","Beliy", 7777777, Position.MANAGER, 99999999.0F, "2001-10-01"));
         System.out.println("Find by name 'Sasha': " + employeeController.getEmployeesByName("Sasha"));
         System.out.println("All employees : ");employeeController.getAllEmployees().forEach(System.out::println);
 //        employeeController.removeEmployee(employeeController.getEmployeesByName("Sasha"));
-
+        System.out.println("-----------------------------------------------------");
         dishController.createDishes();
         dishController.addNewDish(dishController.prepareDish("Cake", DishCategory.DESSERT, 8.00F, 1.0F, Measures.PIECE));
         System.out.println("Find by name 'Cake': " + dishController.getDishByName("Cake"));
-        System.out.println("All dishes : ");dishController.getAllDishes().forEach(System.out::print);
+        System.out.println("All dishes : ");dishController.getAllDishes().forEach(System.out::println);
 //        dishController.removeDish(dishController.getDishByName("Cake"));
+        System.out.println("-----------------------------------------------------");
 
         menuController.createMenus();
 
         List<Dish> desertDishes = new ArrayList<>();
         desertDishes.add(dishController.getDishByName("Cake"));
         menuController.addNewMenu(menuController.prepareMenu("Deserts", desertDishes));
+
         menuController.addDish(dishController.getDishByName("Milk"), menuController.findMenuByName("Deserts"));
-        menuController.deleteDish(Dish(dishController.getDi
-                shByName("Milk"), menuController.findMenuByName("Deserts"));
-
-
+        System.out.println(menuController.findMenuByName("Deserts"));
+        menuController.findAllMenu().forEach(System.out::println);
+//        menuController.deleteDish(dishController.getDishByName("Milk"), menuController.findMenuByName("Deserts"));
 //        menuController.deleteMenu(menuController.findMenuByName("Deserts"));
 
+        System.out.println("-----------------------------------------------------");
 
 
 //        dishController.createDish();
