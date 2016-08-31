@@ -25,13 +25,22 @@ public class Orders {
             name = "dish_to_order",     /*имя третей таблицы*/
             joinColumns = @JoinColumn(name = "order_id"),    /*сюда запишет наш id*/
             inverseJoinColumns = @JoinColumn(name = "dish_id")  /*сюда запишет id связи*/
-
     )
     private List<Dish> dishes;   /*у этого листа будет одинаковый  id ордера*/
     @Column(name = "table_number")
     private int tableNumber;
     @Column(name = "order_date")
     private Date orderDate;
+    @Column(name = "open_status")
+    private boolean status;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "prepared_dish_to_order",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "prepared_dish_id")
+    )
+    private List<PreparedDish> preparedDishes;
 
 
     public Long getId() {
@@ -74,14 +83,31 @@ public class Orders {
         this.orderDate = orderDate;
     }
 
+    public boolean isOpen() {
+        return status;
+    }
+
+    public void setOpenStatus(boolean isOpen) {
+        this.status = isOpen;
+    }
+
+    public List<PreparedDish> getPreparedDishes() {
+        return preparedDishes;
+    }
+
+    public void setPreparedDishes(List<PreparedDish> preparedDishes) {
+        this.preparedDishes = preparedDishes;
+    }
+
     @Override
     public String toString() {
-        return "Order{" +
+        return "Orders{" +
                 "id=" + id +
                 ", waiter=" + waiter +
                 ", dishes=" + dishes +
                 ", tableNumber=" + tableNumber +
                 ", orderDate=" + orderDate +
+                ", status=" + status +
                 '}';
     }
 }

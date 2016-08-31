@@ -24,6 +24,10 @@ public class Dish {
     @Enumerated(EnumType.STRING)
     private Measures measure;
 
+//    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//
+//    private List<Ingredient> ingredients;
+
 
     public Long getId() {
         return id;
