@@ -15,12 +15,15 @@
     <bean id="dishController" class="ua.goit.java.hibernate.controllers.DishController"/>
     <bean id="orderController" class="ua.goit.java.hibernate.controllers.OrderController"/>
     <bean id="menuController" class="ua.goit.java.hibernate.controllers.MenuController"/>
-
+    <bean id="ingredientController" class="ua.goit.java.hibernate.controllers.IngredientController"/>
+    <bean id="warehouseController" class="ua.goit.java.hibernate.controllers.WarehouseController"/>
 
 
     <bean id="employeeDao" class="ua.goit.java.hibernate.dao.hibernate.HEmployeeDao"/>
     <bean id="dishDao" class="ua.goit.java.hibernate.dao.hibernate.HDishDao"/>
     <bean id="orderDao" class="ua.goit.java.hibernate.dao.hibernate.HOrderDao"/>
     <bean id="menuDao" class="ua.goit.java.hibernate.dao.hibernate.HMenuDao"/>
+    <bean id="ingredientDao" class="ua.goit.java.hibernate.dao.hibernate.HIngredientDao"/>
+    <bean id="warehouseDao" class="ua.goit.java.hibernate.dao.hibernate.HWarehouseDao"/>
 
 </beans>

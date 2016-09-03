@@ -3,6 +3,7 @@ package ua.goit.java.hibernate.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Dish {
@@ -24,9 +25,14 @@ public class Dish {
     @Enumerated(EnumType.STRING)
     private Measures measure;
 
-//    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//
-//    private List<Ingredient> ingredients;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "dish_ingredients",
+            joinColumns = @JoinColumn(name = "dish_id"),
+            inverseJoinColumns = @JoinColumn(name = "ingredient_id")
+    )
+
+    private List<Ingredient> ingredients;
 
 
     public Long getId() {
@@ -77,6 +83,14 @@ public class Dish {
         this.measure = measure;
     }
 
+    public List<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -111,8 +125,7 @@ public class Dish {
                 ", price=" + price +
                 ", weight=" + weight +
                 ", measure=" + measure +
+                ", ingredients=" + ingredients +
                 '}';
     }
-
-
 }

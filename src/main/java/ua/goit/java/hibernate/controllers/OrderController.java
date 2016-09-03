@@ -65,8 +65,8 @@ public class OrderController {
         orderDao.deleteDishFromOrder(dish, orders);
     }
     @Transactional
-    public Orders findByName(String name) {
-        return orderDao.findByName(name);
+    public Orders findById(Long id) {
+        return orderDao.findById(id);
     }
 
     @Transactional

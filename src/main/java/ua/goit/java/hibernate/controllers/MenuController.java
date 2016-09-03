@@ -32,6 +32,7 @@ public class MenuController {
         List<Dish> banketDishes = new ArrayList<>();
         banketDishes.add(dishDao.findByName("Plov"));
         banketDishes.add(dishDao.findByName("Salad"));
+
         Menu banket = prepareMenu("Banket", banketDishes);
 
         List<Dish> lunchDishes = new ArrayList<>();

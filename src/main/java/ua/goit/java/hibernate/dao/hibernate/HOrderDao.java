@@ -36,9 +36,9 @@ public class HOrderDao implements OrderDao {
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
-    public Orders findByName(String name) {
-        Query query = sessionFactory.getCurrentSession().createQuery("select o from Orders o where o.name = :name");
-        query.setParameter("name", name);
+    public Orders findById(Long id) {
+        Query query = sessionFactory.getCurrentSession().createQuery("select o from Orders o where o.id = :id");
+        query.setParameter("id", id);
         return (Orders) query.uniqueResult();
     }
 

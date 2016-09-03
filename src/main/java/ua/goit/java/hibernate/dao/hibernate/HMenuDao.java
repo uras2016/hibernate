@@ -3,6 +3,7 @@ package ua.goit.java.hibernate.dao.hibernate;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import ua.goit.java.hibernate.dao.MenuDao;
 import ua.goit.java.hibernate.model.Dish;
@@ -15,7 +16,7 @@ public class HMenuDao implements MenuDao{
     private SessionFactory sessionFactory;
 
     @Override
-    @Transactional/*(propagation = Propagation.MANDATORY)*/
+    @Transactional(propagation = Propagation.MANDATORY)
     public void add(Menu menu) {
         sessionFactory.getCurrentSession().save(menu);
     }

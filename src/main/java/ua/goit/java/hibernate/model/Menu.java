@@ -1,7 +1,9 @@
 package ua.goit.java.hibernate.model;
 
+
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
@@ -10,8 +12,13 @@ import java.util.List;
 @Table(name = "menu")
 public class Menu {
 
-
     @Id
+    @Column(name = "id")      // на какую колонку
+    @GeneratedValue(generator = "increment")    // автоинкремент
+    @GenericGenerator(name = "increment", strategy = "increment")  // автоинкремент
+    private Long id;
+
+
     @Column(name = "name")
     private String name;
 
@@ -47,16 +54,27 @@ public class Menu {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Menu)) return false;
+
+        Menu menu = (Menu) o;
+
+        return name != null ? name.equals(menu.name) : menu.name == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return name != null ? name.hashCode() : 0;
+    }
+
+    @Override
     public String toString() {
-        StringBuilder dishesList = new StringBuilder();
-
-        for (Dish dish: dishes) {
-            dishesList.append(dish.getName() + ", ");
-        }
-
         return "Menu{" +
-                "name='" + name + '\'' +
-                ", dishes=" + "\"" + dishesList + "\"" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", dishes=" + dishes +
                 '}';
     }
 }

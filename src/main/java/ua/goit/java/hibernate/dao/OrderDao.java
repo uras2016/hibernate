@@ -9,7 +9,7 @@ public interface OrderDao {
 
     void save(Orders order);
     void deleteOrder(Orders orders);
-    Orders findByName(String name);
+    Orders findById(Long id);
     void addDishToOrder(Dish dish, Orders orders);
     void deleteDishFromOrder(Dish dish, Orders orders);
     void closeOrder(Orders orders);

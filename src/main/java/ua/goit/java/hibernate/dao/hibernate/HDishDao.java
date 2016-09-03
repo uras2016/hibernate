@@ -4,6 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import ua.goit.java.hibernate.dao.DishDao;
 import ua.goit.java.hibernate.model.Dish;
@@ -16,7 +17,7 @@ public class HDishDao implements DishDao{
     private SessionFactory sessionFactory;
 
     @Override
-    @Transactional
+    @Transactional(propagation = Propagation.REQUIRED)
     public void save(Dish dish) {
         sessionFactory.getCurrentSession().save(dish);
     }
@@ -30,8 +31,7 @@ public class HDishDao implements DishDao{
     @Override
     @Transactional
     public Dish findByName(String name) {
-        Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery("select e from Dish e where e.name like :name"); // :name - параметр, переданный в запрос
+        Query query = sessionFactory.getCurrentSession().createQuery("select e from Dish e where e.name like :name"); // :name - параметр, переданный в запрос
         query.setParameter("name", name);
         return (Dish) query.uniqueResult();
     }
