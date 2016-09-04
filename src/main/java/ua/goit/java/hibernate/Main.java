@@ -108,6 +108,7 @@ public class Main {
         System.out.println(warehouseController.findByName("rice"));
         System.out.println(warehouseController.findEndsIngredients());
 //        warehouseController.remove(warehouseController.findByName("rice"));
+
     }
 
 

@@ -17,6 +17,7 @@
     <bean id="menuController" class="ua.goit.java.hibernate.controllers.MenuController"/>
     <bean id="ingredientController" class="ua.goit.java.hibernate.controllers.IngredientController"/>
     <bean id="warehouseController" class="ua.goit.java.hibernate.controllers.WarehouseController"/>
+    <bean id="preparedDishController" class="ua.goit.java.hibernate.controllers.KitchenHistoryController"/>
 
 
     <bean id="employeeDao" class="ua.goit.java.hibernate.dao.hibernate.HEmployeeDao"/>
@@ -25,5 +26,6 @@
     <bean id="menuDao" class="ua.goit.java.hibernate.dao.hibernate.HMenuDao"/>
     <bean id="ingredientDao" class="ua.goit.java.hibernate.dao.hibernate.HIngredientDao"/>
     <bean id="warehouseDao" class="ua.goit.java.hibernate.dao.hibernate.HWarehouseDao"/>
+    <bean id="preparedDish" class="ua.goit.java.hibernate.dao.hibernate.HPreparedDishDao"/>
 
 </beans>
